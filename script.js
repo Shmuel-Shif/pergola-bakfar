@@ -1,0 +1,96 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav-desktop');
+    const navLinks = nav.querySelectorAll('a');
+
+    // פתיחה/סגירה של התפריט
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('show');
+        // משנה את האייקון של ההמבורגר
+        const icon = hamburger.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // סגירת התפריט כשלוחצים על קישור
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('show');
+            // מחזיר את אייקון ההמבורגר למצב הרגיל
+            const icon = hamburger.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        });
+    });
+
+    // סגירת התפריט כשלוחצים מחוץ לתפריט
+    document.addEventListener('click', (event) => {
+        if (!nav.contains(event.target) && !hamburger.contains(event.target) && nav.classList.contains('show')) {
+            nav.classList.remove('show');
+            const icon = hamburger.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        }
+    });
+
+    // טיפול בפורמט מספר טלפון
+    const phoneInput = document.getElementById('phone');
+    
+    phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, ''); // משאיר רק מספרים
+        
+        if (value.length >= 9) {
+            if (value.length === 9) {
+                // מספר בפורמט 02/03/08/09 וכו'
+                value = value.slice(0, 2) + '-' + value.slice(2);
+            } else if (value.length === 10) {
+                // מספר בפורמט 050/052/054 וכו'
+                value = value.slice(0, 3) + '-' + value.slice(3);
+            }
+            
+            // מגביל את האורך המקסימלי
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+        }
+        
+        e.target.value = value;
+    });
+
+    // טיפול בלחיצה על Enter בתיבת ההודעה
+    const messageTextarea = document.querySelector('.contact-form textarea');
+    
+    messageTextarea.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault(); // מונע שליחת הטופס
+            const start = messageTextarea.selectionStart;
+            const end = messageTextarea.selectionEnd;
+            const value = messageTextarea.value;
+            
+            messageTextarea.value = value.substring(0, start) + '\n' + value.substring(end);
+            messageTextarea.selectionStart = messageTextarea.selectionEnd = start + 1;
+        }
+    });
+
+    // נוסיף את הקוד הבא בסוף הקובץ
+    const whatsappToggle = document.getElementById('whatsappToggle');
+    const whatsappPopup = document.getElementById('whatsappPopup');
+    const closePopup = document.getElementById('closePopup');
+
+    whatsappToggle.addEventListener('click', () => {
+        whatsappPopup.classList.toggle('show');
+    });
+
+    closePopup.addEventListener('click', () => {
+        whatsappPopup.classList.remove('show');
+    });
+
+    // סגירת הפופאפ כשלוחצים מחוץ אליו
+    document.addEventListener('click', (event) => {
+        if (!whatsappPopup.contains(event.target) && 
+            !whatsappToggle.contains(event.target) && 
+            whatsappPopup.classList.contains('show')) {
+            whatsappPopup.classList.remove('show');
+        }
+    });
+}); 
