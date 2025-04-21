@@ -93,4 +93,62 @@ document.addEventListener('DOMContentLoaded', () => {
             whatsappPopup.classList.remove('show');
         }
     });
+
+    // אתחול EmailJS - חשוב שיהיה בהתחלה
+    emailjs.init("DLrJv93pOQmrmW3UE");
+
+    // טיפול בשליחת הטופס
+    const contactForm = document.querySelector('.contact-form');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // מציג את אנימציית הטעינה
+        loadingOverlay.classList.add('show');
+        
+        // שליחת המייל
+        emailjs.send(
+            'service_x2s8qnf',
+            'template_96b5i0j',
+            {
+                name: contactForm.querySelector('input[placeholder="שם מלא"]').value,
+                phone: contactForm.querySelector('#phone').value,
+                message: contactForm.querySelector('textarea').value,
+                time: new Date().toLocaleString('he-IL')
+            }
+        )
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            contactForm.reset();
+            
+            // מעבר לדף תודה אחרי חצי שנייה
+            setTimeout(() => {
+                loadingOverlay.classList.remove('show');
+                window.location.href = 'thanks.html';
+            }, 500);
+        }, function(error) {
+            console.error('FAILED...', error);
+            loadingOverlay.classList.remove('show');
+            alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב מאוחר יותר.');
+        });
+    });
+
+    // ולידציה משופרת למספר טלפון ישראלי
+    function validateIsraeliPhone(phone) {
+        // מסיר תווים שאינם מספרים
+        const cleanPhone = phone.replace(/\D/g, '');
+        
+        // בודק אם המספר מתחיל ב-05 ואורכו 10 ספרות
+        // או מתחיל ב-02/03/04/08/09 ואורכו 9 ספרות
+        const mobilePattern = /^05\d{8}$/;
+        const landlinePattern = /^0(?:[234689])\d{7}$/;
+        
+        return mobilePattern.test(cleanPhone) || landlinePattern.test(cleanPhone);
+    }
+
+    phoneInput.addEventListener('input', (e) => {
+        const isValid = validateIsraeliPhone(e.target.value.replace(/\D/g, ''));
+        phoneInput.setCustomValidity(isValid ? '' : 'אנא הזן מספר טלפון ישראלי תקין');
+    });
 }); 

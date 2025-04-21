@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- נוסיף את הספרייה בhead -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -75,7 +77,56 @@
     <section id="gallery" class="gallery">
         <h2>גלריית עבודות</h2>
         <div class="gallery-grid">
-            <!-- תמונות יתווספו כאן -->
+            <div class="gallery-item">
+                <img src="images/gallery/pergola1.jpg" alt="פרגולה מעץ" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>פרגולת עץ</h3>
+                    <p>התקנת פרגולה מעץ איכותי בחצר פרטית</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/pergola2.jpg" alt="פרגולה מעץ" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>פרגולת עץ</h3>
+                    <p>התקנת פרגולה מעץ איכותי בחצר פרטית</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/pergola3.jpg" alt="פרגולה מעץ" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>פרגולת עץ</h3>
+                    <p>התקנת פרגולה מעץ איכותי בחצר פרטית</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/pergola4.jpg" alt="פרגולה מעץ" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>פרגולת עץ</h3>
+                    <p>התקנת פרגולה מעץ איכותי בחצר פרטית</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/pergola5.jpg" alt="פרגולה מעץ" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>פרגולת עץ</h3>
+                    <p>התקנת פרגולה מעץ איכותי בחצר פרטית</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/pergola6.jpg" alt="פרגולה מעץ" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>פרגולת עץ</h3>
+                    <p>התקנת פרגולה מעץ איכותי בחצר פרטית</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/grass1.jpg" alt="דשא סינטטי" loading="lazy">
+                <div class="gallery-overlay">
+                    <h3>דשא סינטטי</h3>
+                    <p>התקנת דשא סינטטי בגינה משפחתית</p>
+                </div>
+            </div>
+            <!-- עוד 4-6 תמונות באותו פורמט -->
         </div>
     </section>
 
@@ -84,17 +135,17 @@
         <h2>צור קשר</h2>
         <div class="contact-container">
             <form class="contact-form">
-                <input type="text" placeholder="שם מלא" required>
-                <input type="tel" id="phone" placeholder="טלפון" pattern="[0-9]{9,10}" required>
-                <textarea placeholder="הודעה" rows="4" required></textarea>
+                <input type="text" placeholder="שם מלא" required minlength="2">
+                <input type="tel" id="phone" placeholder="טלפון" required>
+                <textarea placeholder="הודעה" rows="4" required minlength="10"></textarea>
                 <button type="submit" class="submit-button">שליחה</button>
             </form>
             <div class="contact-info">
                 <div class="info-item">
                     <i class="fas fa-phone"></i>
-                    <p>058-7701009</p>
-                    <p>054-8916223</p>
-                    <p>051-2177021</p>
+                    <p>שמואל. 058-7701009</p>
+                    <p>ארי. 054-8916223</p>
+                    <p>זאבי. 051-2177021</p>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
@@ -119,20 +170,26 @@
                 <div class="whatsapp-contacts">
                     <a href="https://wa.me/972587701009" target="_blank" class="whatsapp-contact">
                         <i class="fab fa-whatsapp"></i>
-                        <span>058-7701009</span>
+                        <span>שמואל. 058-7701009</span>
                     </a>
                     <a href="https://wa.me/972548916223" target="_blank" class="whatsapp-contact">
                         <i class="fab fa-whatsapp"></i>
-                        <span>054-8916223</span>
+                        <span>ארי. 054-8916223</span>
                     </a>
                     <a href="https://wa.me/972512177021" target="_blank" class="whatsapp-contact">
                         <i class="fab fa-whatsapp"></i>
-                        <span>051-2177021</span>
+                        <span>זאבי. 051-2177021</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- הוסף את זה אחרי הטופס -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">שולח את הטופס...</div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
