@@ -72,30 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // נוסיף את הקוד הבא בסוף הקובץ
-    const whatsappToggle = document.getElementById('whatsappToggle');
-    const whatsappPopup = document.getElementById('whatsappPopup');
-    const closePopup = document.getElementById('closePopup');
-
-    whatsappToggle.addEventListener('click', () => {
-        whatsappPopup.classList.toggle('show');
-    });
-
-    closePopup.addEventListener('click', () => {
-        whatsappPopup.classList.remove('show');
-    });
-
-    // סגירת הפופאפ כשלוחצים מחוץ אליו
-    document.addEventListener('click', (event) => {
-        if (!whatsappPopup.contains(event.target) && 
-            !whatsappToggle.contains(event.target) && 
-            whatsappPopup.classList.contains('show')) {
-            whatsappPopup.classList.remove('show');
-        }
-    });
-
     // אתחול EmailJS - חשוב שיהיה בהתחלה
-    emailjs.init("DLrJv93pOQmrmW3UE");
+    emailjs.init("STrvJthFs7ZwF3HDM");
 
     // טיפול בשליחת הטופס
     const contactForm = document.querySelector('.contact-form');
@@ -109,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // שליחת המייל
         emailjs.send(
-            'service_x2s8qnf',
-            'template_96b5i0j',
+            'service_fmjqu8i',
+            'template_8nwuv0m',
             {
                 name: contactForm.querySelector('input[placeholder="שם מלא"]').value,
                 phone: contactForm.querySelector('#phone').value,
@@ -124,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 loadingOverlay.classList.remove('show');
-                window.location.href = '/Pergolas-business/thanks.html';
+                window.location.href = 'thanks.html';
             }, 500);
         }, function(error) {
-            console.error('FAILED...', error);
+            console.error('FAILED...', error.text);
             loadingOverlay.classList.remove('show');
-            alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב מאוחר יותר.');
+            alert('אירעה שגיאה בשליחת הטופס: ' + error.text);
         });
     });
 
@@ -182,4 +160,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // הפעלת הקרוסלה אחרי טעינת העמוד
     window.addEventListener('load', initSwiper);
+
+    // הוספת הקוד למודל התמונות
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.modal-close');
+
+    // הוספת מאזין לכל התמונות בסליידר
+    document.querySelectorAll('.swiper-slide img').forEach(img => {
+        img.addEventListener('click', function() {
+            modal.classList.add('show');
+            modalImg.src = this.src;
+            document.body.style.overflow = 'hidden'; // מונע גלילה ברקע
+        });
+    });
+
+    // סגירת המודל
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // מחזיר את הגלילה
+    }
+
+    // סגירה עם מקש ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
 }); 
