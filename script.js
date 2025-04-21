@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 loadingOverlay.classList.remove('show');
-                window.location.href = './thanks.html';
+                window.location.href = '/Pergolas-business/thanks.html';
             }, 500);
         }, function(error) {
             console.error('FAILED...', error);
