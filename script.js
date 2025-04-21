@@ -194,4 +194,22 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // הוספת קוד לחץ הגלילה
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+
+    window.addEventListener('scroll', () => {
+        // מסתיר את החץ כשגוללים למטה
+        if (window.scrollY > 100) {
+            scrollIndicator.classList.add('hide');
+        } else {
+            scrollIndicator.classList.remove('hide');
+        }
+    });
+
+    // הוספת אפשרות ללחוץ על החץ לגלילה חלקה
+    scrollIndicator.addEventListener('click', () => {
+        const aboutSection = document.querySelector('#about');
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+    });
 }); 

@@ -26,7 +26,7 @@ body {
     right: 0;
     left: 0;
     background: var(--white);
-    padding: 1rem 0;
+    padding: 1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -35,9 +35,24 @@ body {
 }
 
 .logo {
+    text-decoration: none;
+}
+
+.logo-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-text {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
 }
 
 .nav-desktop ul {
@@ -71,9 +86,10 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg');
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('images/gallery/pergola7.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; /* אפקט פראלקס */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,9 +98,23 @@ body {
     padding: 2rem;
 }
 
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .cta-button {
@@ -166,6 +196,66 @@ h2 {
 
     .service-card i {
         font-size: 2rem;
+    }
+
+    .hero {
+        background-attachment: scroll; /* מבטל את הפראלקס במובייל */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .nav-desktop {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem;
+        transform: translateX(-100%);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-desktop.show {
+        transform: translateX(0);
+    }
+
+    .nav-desktop a {
+        display: block;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.137);
+    }
+
+    .nav-desktop a:hover {
+        color: var(--primary-color);
+        transform: translateX(5px);
+    }
+
+    .logo-content {
+        gap: 0.3rem;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+
+    /* אם צריך עוד מקום אפשר להקטין את הפדינג של ההדר */
+    .header {
+        padding: 0.7rem 1rem;
+    }
+
+    /* הקטנת הרווח בין הלוגו לכפתור התפריט */
+    .hamburger {
+        margin-right: 0.3rem;
     }
 }
 
@@ -382,17 +472,54 @@ h2 {
 
 .social-links {
     margin-top: 1rem;
+    display: flex;
+    gap: 1.5rem; /* מרווח גדול יותר בין האייקונים */
+    justify-content: center;
 }
 
 .social-links a {
     color: var(--white);
-    margin: 0 0.5rem;
     font-size: 1.5rem;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .social-links a:hover {
     color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* צבעים ספציפיים בהובר */
+.social-links a:hover .fa-instagram {
+    color: #fff; /* טקסט לבן */
+    text-shadow:
+        0 0 5px #E1306C,       /* ורוד פוקסיה */
+        1px 1px 3px #F56040,   /* כתום */
+        -1px -1px 3px #FFD700;  /* זהב עדין */
+}
+
+.social-links a:hover .fa-linkedin {
+    color: #ffffff; /* הטקסט עצמו – לבן */
+    text-shadow:
+        0 0 5px #0077B5,       /* זוהר כחול כהה */
+        1px 1px 3px #00a0dc,   /* כחול בהיר */
+       -1px -1px 3px #00a0dc;  /* נגד כיוון */
+}
+
+.social-links a:hover .fa-pinterest {
+    color: #ffffff; /* בסיס - לבן */
+    text-shadow: 
+        0 0 5px #E60023,      /* זוהר אדום */
+        1px 1px 2px #E60023,  /* הצללה אדומה */
+       -1px -1px 2px #E60023;
+}
+
+.social-links a:hover .fa-tiktok {
+    color: #ffffff; /* טקסט לבן במרכז */
+    text-shadow: 
+        1px 1px 5px #00f2ea,   /* תכלת */
+       -1px -1px 5px #ff0050,  /* אדום-ורוד */
+        0 0 2px #ffffff;      /* זוהר לבן */
 }
 
 /* Mobile Navigation */
@@ -412,25 +539,26 @@ h2 {
         font-size: 1.2rem;
     }
 
-    .logo {
-        order: 2;
-        margin: 0 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row-reverse;
-        gap: 12rem;
+    .logo-content {
+        gap: 0.3rem;
+    }
+
+    .logo-text {
         font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 30px;
     }
 
     .nav-desktop {
         position: fixed;
-        top: 70px; /* גובה ההדר */
-        right: 0;
+        top: 70px;
+        left: 0;
         width: 100%;
         background: var(--white);
         padding: 1rem;
-        transform: translateX(100%);
+        transform: translateX(-100%);
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
@@ -452,6 +580,12 @@ h2 {
     .nav-desktop a {
         display: block;
         padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.137);
+    }
+
+    .nav-desktop a:hover {
+        color: var(--primary-color);
+        transform: translateX(5px);
     }
 
     .hero-content h1 {
@@ -1003,5 +1137,34 @@ section[id] {
     .about p {
         font-size: 0.95rem;
         padding: 0 1rem;
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator.hide {
+    opacity: 0;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-10px);
     }
 }
