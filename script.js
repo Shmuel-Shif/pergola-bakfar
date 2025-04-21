@@ -150,4 +150,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const isValid = validateIsraeliPhone(e.target.value.replace(/\D/g, ''));
         phoneInput.setCustomValidity(isValid ? '' : 'אנא הזן מספר טלפון ישראלי תקין');
     });
+
+    // אתחול הקרוסלה
+    const initSwiper = () => {
+        new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    };
+
+    // הפעלת הקרוסלה אחרי טעינת העמוד
+    window.addEventListener('load', initSwiper);
 }); 

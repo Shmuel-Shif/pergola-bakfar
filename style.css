@@ -426,6 +426,78 @@ h2 {
     .whatsapp-contact i {
         font-size: 1.2rem;
     }
+
+    .gallery {
+        padding: 2rem 1rem;
+    }
+
+    .gallery-container {
+        padding: 0 45px;
+        max-width: 320px;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 40% !important;
+        width: 25px !important;
+        height: 25px !important;
+    }
+    
+    .swiper-button-next {
+        right: 10px !important;
+    }
+    
+    .swiper-button-prev {
+        left: 10px !important;
+    }
+
+    .swiper-pagination {
+        margin-top: 12px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 6px !important;
+        height: 6px !important;
+        margin: 0 3px !important;
+    }
+
+    .swiper-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .slide-overlay {
+        padding: 0.7rem;
+    }
+
+    .slide-overlay h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .slide-overlay p {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 360px) {
+    .gallery-container {
+        padding: 0 20px;
+        max-width: 280px;
+    }
+
+    .slide-overlay {
+        padding: 0.6rem;
+    }
+
+    .slide-overlay h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .slide-overlay p {
+        font-size: 0.7rem;
+    }
 }
 
 .thanks-page {
@@ -492,77 +564,178 @@ h2 {
     background: var(--light-gray);
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 80px;
 }
 
-.gallery-item {
-    position: relative;
+.mySwiper {
+    width: 100%;
+    direction: ltr;
+}
+
+.swiper-wrapper {
+    margin-bottom: 40px;
+}
+
+.swiper-slide {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
     aspect-ratio: 4/3;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    direction: rtl;
 }
 
-.gallery-item:hover {
-    transform: translateY(-5px);
-}
-
-.gallery-item img {
+.swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
 }
 
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-overlay {
+.slide-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
     padding: 1rem;
     color: white;
-    opacity: 1;
-    transform: translateY(0);
 }
 
-.gallery-overlay h3 {
+.slide-overlay h3 {
     font-size: 1.1rem;
     margin-bottom: 0.3rem;
-    font-weight: 600;
 }
 
-.gallery-overlay p {
+.slide-overlay p {
     font-size: 0.9rem;
     opacity: 0.9;
 }
 
-/* Mobile Responsive */
+/* עיצוב החצים */
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute !important;
+    top: 45% !important;
+    transform: translateY(-50%) !important;
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    border-radius: 50% !important;
+    color: var(--primary-color) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.swiper-button-next {
+    right: 20px !important;
+}
+
+.swiper-button-prev {
+    left: 20px !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 0.9rem !important;
+    font-weight: bold;
+    margin: 0 !important;
+}
+
+/* עיצוב הנקודות */
+.swiper-pagination {
+    position: static !important;
+    margin-top: 15px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 4px !important;
+    background: var(--primary-color) !important;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
 @media (max-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
+    .gallery-container {
+        padding: 0 45px;
+        max-width: 320px;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 40% !important;
+        width: 25px !important;
+        height: 25px !important;
+    }
+    
+    .swiper-button-next {
+        right: 10px !important;
+    }
+    
+    .swiper-button-prev {
+        left: 10px !important;
+    }
+    
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 0.7rem !important;
     }
 
-    .gallery-overlay {
-        padding: 0.8rem;
+    .swiper-pagination {
+        margin-top: 12px !important;
     }
 
-    .gallery-overlay h3 {
-        font-size: 1rem;
+    .swiper-pagination-bullet {
+        width: 6px !important;
+        height: 6px !important;
+        margin: 0 3px !important;
+    }
+
+    .slide-overlay {
+        padding: 0.7rem;
+    }
+
+    .slide-overlay h3 {
+        font-size: 0.9rem;
         margin-bottom: 0.2rem;
     }
 
-    .gallery-overlay p {
-        font-size: 0.8rem;
+    .slide-overlay p {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 360px) {
+    .gallery-container {
+        padding: 0 30px;
+        max-width: 280px;
+    }
+
+    .slide-overlay {
+        padding: 0.6rem;
+    }
+
+    .slide-overlay h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .slide-overlay p {
+        font-size: 0.7rem;
     }
 }
