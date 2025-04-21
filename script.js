@@ -122,10 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('SUCCESS!', response.status, response.text);
             contactForm.reset();
             
-            // מעבר לדף תודה אחרי חצי שנייה
             setTimeout(() => {
                 loadingOverlay.classList.remove('show');
-                window.location.href = 'thanks.html';
+                window.location.href = './thanks.html';
             }, 500);
         }, function(error) {
             console.error('FAILED...', error);
