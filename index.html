@@ -58,15 +58,15 @@
         <p>
             החברה שלנו מתמחה בהקמת גינות מאפס למאה.
 
-            • דשא סינטטי איכותי ועמיד
-            • יציקות בטון מקצועיות
-            • גדרות עץ בהתאמה אישית
-            • השתלת כל סוגי העצים
-            • פרגולות מעץ ואלומיניום
-            • מחסנים מעץ ומפנל
-            • בניית שולחנות, ספסלים ונדנדות מעץ
-            • קישוט שבילים בשילוב אבני נוי, תאורה ועיצובים מרהיבים
-            • התאמה אישית של דקים בעיצובים וסגנונות שונים
+            • דשא סינטטי איכותי ועמיד.
+            • יציקות בטון מקצועיות.
+            • גדרות עץ בהתאמה אישית.
+            • השתלת כל סוגי העצים.
+            • פרגולות מעץ ואלומיניום.
+            • מחסנים מעץ ומפנל.
+            • בניית שולחנות וספסלים מעץ.
+            • קישוט שבילים בשילוב אבני נוי, תאורה ועיצובים מרהיבים.
+            • התאמה אישית של דקים בעיצובים וסגנונות שונים.
 
             הכל בהתאמה אישית לצרכים שלך, עם שירות איכותי, מקצועי ומסור.
         </p>
@@ -104,7 +104,7 @@
             <div class="service-card">
                 <i class="fas fa-couch"></i>
                 <h3>ריהוט גן</h3>
-                <p>בניית שולחנות, ספסלים ונדנדות מעץ</p>
+                <p>בניית שולחנות וספסלים מעץ</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-road"></i>
@@ -216,10 +216,59 @@
     <section id="contact" class="contact">
         <h2>צור קשר</h2>
         <div class="contact-container">
-            <form class="contact-form">
-                <input type="text" placeholder="שם מלא" required minlength="2">
-                <input type="tel" id="phone" placeholder="טלפון" required>
-                <textarea placeholder="הודעה" rows="4" required minlength="10"></textarea>
+            <form class="contact-form" id="contactForm">
+                <input type="text" name="name" placeholder="שם מלא" required minlength="2">
+                <input type="tel" id="phone" name="phone" placeholder="טלפון" required>
+                
+                <!-- בחירת סוג השירות -->
+                <select name="service" id="serviceSelect" required>
+                    <option value="" disabled selected hidden>בחר את השירות המבוקש</option>
+                    <option value="pergola">פרגולות מעץ ואלומיניום</option>
+                    <option value="grass">דשא סינטטי</option>
+                    <option value="concrete">יציקות בטון</option>
+                    <option value="fence">גדרות עץ</option>
+                    <option value="trees">השתלת עצים</option>
+                    <option value="storage">מחסנים</option>
+                    <option value="furniture">שולחנות וספסלים</option>
+                    <option value="paths">שבילים</option>
+                    <option value="deck">דקים</option>
+                    <option>אחר</option>
+                </select>
+                
+                <!-- שדות מידות דינמיים - יוצגו בהתאם לבחירה -->
+                <div id="dimensionsFields" class="dimensions-container" style="display: none;">
+                    <!-- השדות יתווספו דינמית דרך JavaScript -->
+                </div>
+                
+                <textarea name="message" placeholder="הודעה" rows="4" required minlength="0"></textarea>
+                
+                <!-- עדכון חלק העלאת התמונות בטופס -->
+                <div class="file-upload-container">
+                    <div class="upload-options-wrapper">
+                        <button type="button" class="upload-options-btn" id="uploadOptionsBtn">
+                            <i class="fas fa-camera"></i>
+                            הוסף תמונות
+                        </button>
+                        
+                        <div class="upload-options-menu" id="uploadOptionsMenu">
+                            <button type="button" class="upload-option" id="cameraOption">
+                                <i class="fas fa-camera"></i>
+                                צלם תמונה
+                            </button>
+                            <button type="button" class="upload-option" id="galleryOption">
+                                <i class="fas fa-images"></i>
+                                בחר מהגלריה
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Input-ים נסתרים -->
+                    <input type="file" id="fileUpload" multiple accept="image/*" style="display: none;">
+                    <input type="file" id="cameraInput" capture="environment" accept="image/*" style="display: none;">
+                    
+                    <div id="imagePreview" class="image-preview-container"></div>
+                </div>
+
                 <button type="submit" class="submit-button">שליחה</button>
             </form>
             <div class="contact-info">
@@ -256,8 +305,13 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>© 2025 פרגולה בכפר.</p>
+            <p>© 2025 פרגולה בכפר - הגינה שלך, ברמה שלנו.</p>
             <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61575315639346" 
+                   target="_blank" 
+                   rel="noopener">
+                    <i class="fab fa-facebook"></i>
+                </a>
                 <a href="https://www.instagram.com/pergula_bakfar/" 
                    target="_blank" 
                    rel="noopener">
@@ -281,6 +335,17 @@
     <div class="modal" id="imageModal">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- הוסף את זה בסוף הבודי, לפני הסקריפטים -->
+    <div class="error-modal" id="errorModal">
+        <div class="error-modal-content">
+            <div class="error-modal-header">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <p id="errorMessage"></p>
+            <button class="error-modal-close">הבנתי</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

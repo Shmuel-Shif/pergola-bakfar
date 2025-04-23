@@ -286,28 +286,62 @@ h2 {
     gap: 1rem;
 }
 
+/* עדכון סגנון הפוקוס לכל שדות הטופס */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* עדכון סגנון בסיסי לכל השדות */
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-family: 'Assistant', sans-serif;
     font-size: 1rem;
+    transition: border-color 0.3s;
+    text-align: right;
+}
+
+/* שמירה על הפדינג המיוחד לסלקט */
+.contact-form select {
     width: 100%;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
     text-align: right;
     background: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 12px;
 }
 
-.contact-form textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-/* עיצוב מיוחד למספר טלפון */
-.contact-form input[type="tel"] {
-    letter-spacing: 1px;
-    direction: ltr;
+/* עדכון יישור האפשרויות */
+.contact-form select option {
+    padding: 10px;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0;
+    width: 100%;
     text-align: right;
+    direction: rtl;
+}
+
+/* עדכון סגנון בסיסי לכל השדות */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    color: var(--text-color);
 }
 
 /* עיצוב לפלייסהולדר */
@@ -502,6 +536,14 @@ h2 {
         1px 1px 5px #00f2ea,   /* תכלת */
        -1px -1px 5px #ff0050,  /* אדום-ורוד */
         0 0 2px #ffffff;      /* זוהר לבן */
+}
+
+.social-links a:hover .fa-facebook {
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px #1877f2,
+        1px 1px 2px #1877f2,
+        -1px -1px 2px #1877f2;
 }
 
 /* Mobile Navigation */
@@ -1141,4 +1183,295 @@ section[id] {
     60% {
         transform: translateX(-50%) translateY(-10px);
     }
+}
+
+/* Contact Form New Styles */
+.contact-form select {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    text-align: right;
+    background: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 12px;
+}
+
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* הוספת סגנון להסתרת האופציה הראשונה */
+.contact-form select option[value=""] {
+    display: none;
+}
+
+/* עדכון הפלייסהולדר של הסלקט */
+.contact-form select:invalid {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* עדכון סגנון שדה התיאור לשירות 'אחר' */
+.contact-form input[id="description"] {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.dimensions-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dimension-field {
+    position: relative;
+}
+
+.dimension-field input {
+    width: 100%;
+    padding-left: 3rem;
+}
+
+.dimension-field .unit {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+}
+
+.file-upload-container {
+    text-align: center;
+    width: 100%;
+}
+
+.upload-options-wrapper {
+    position: relative;
+    display: inline-block; /* חשוב שיהיה inline-block */
+}
+
+.upload-options-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.upload-options-btn:hover {
+    background: var(--secondary-color);
+}
+
+.upload-options-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    z-index: 100;
+    min-width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    margin-top: 5px;
+}
+
+.upload-options-menu.show {
+    display: block;
+}
+
+.upload-option {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background-color 0.2s;
+    border-radius: 8px;
+    color: var(--text-color);
+}
+
+.upload-option:hover {
+    background: var(--light-gray);
+}
+
+.upload-option i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.image-preview-container {
+    margin-top: 1.5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+.image-preview {
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-preview .remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.image-preview .remove-image:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+/* התאמה למסכים גדולים */
+@media (min-width: 768px) {
+    .image-preview-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* התאמה למובייל */
+@media (max-width: 767px) {
+    .image-preview-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .image-preview {
+        width: 120px;
+        height: 100px;
+    }
+}
+
+/* Error Modal Styles */
+.error-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-modal.show {
+    display: flex;
+}
+
+.error-modal-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 90%;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.error-modal-header {
+    margin-bottom: 1rem;
+}
+
+.error-modal-header i {
+    color: #ff4444;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.error-modal-header h3 {
+    color: var(--text-color);
+    margin: 0;
+}
+
+.error-modal p {
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+.error-modal-close {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.error-modal-close:hover {
+    background: var(--secondary-color);
+}
+
+@media (max-width: 480px) {
+    .error-modal-content {
+        width: 280px;
+        padding: 1.2rem;
+    }
+    
+    .error-modal-header i {
+        font-size: 1.8rem;
+    }
+}
+
+/* עדכון צבע הפלייסהולדרים */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.contact-form select::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* עדכון צבע הטקסט בשדות */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    color: var(--text-color);
 }
