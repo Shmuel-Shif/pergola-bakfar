@@ -308,36 +308,13 @@ h2 {
     text-align: right;
 }
 
-/* שמירה על הפדינג המיוחד לסלקט */
-.contact-form select {
-    width: 100%;
-    padding: 1rem;
-    padding-left: 2.5rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: 'Assistant', sans-serif;
-    font-size: 1rem;
-    text-align: right;
-    background: white;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: left 1rem center;
-    background-size: 12px;
-}
-
-/* עדכון יישור האפשרויות */
-.contact-form select option {
-    padding: 10px;
-    font-size: 1rem;
+/* עדכון סגנון הפלייסהולדר של הסלקט */
+.contact-form select option[value=""] {
     color: var(--text-color);
-    margin: 0;
-    width: 100%;
-    text-align: right;
-    direction: rtl;
+    opacity: 0.7;
 }
 
-/* עדכון סגנון בסיסי לכל השדות */
+/* עדכון צבע הטקסט בשדות */
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
@@ -1208,17 +1185,6 @@ section[id] {
     border-color: var(--primary-color);
 }
 
-/* הוספת סגנון להסתרת האופציה הראשונה */
-.contact-form select option[value=""] {
-    display: none;
-}
-
-/* עדכון הפלייסהולדר של הסלקט */
-.contact-form select:invalid {
-    color: var(--text-color);
-    opacity: 0.7;
-}
-
 /* עדכון סגנון שדה התיאור לשירות 'אחר' */
 .contact-form input[id="description"] {
     min-height: 80px;
@@ -1461,7 +1427,6 @@ section[id] {
     }
 }
 
-/* עדכון צבע הפלייסהולדרים */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder,
 .contact-form select::placeholder {
@@ -1469,9 +1434,129 @@ section[id] {
     opacity: 0.7;
 }
 
-/* עדכון צבע הטקסט בשדות */
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
     color: var(--text-color);
+}
+
+.contact-form input[name="city"] {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    text-align: right;
+    background: white;
+    transition: border-color 0.3s;
+    color: var(--text-color);
+}
+
+.contact-form input[name="city"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.contact-form select:invalid {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* עדכון סגנון שדה התיאור לשירות 'אחר' */
+.contact-form input[id="description"] {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* עדכון שמירה על צבע רגיל לאפשרויות שנבחרו */
+.contact-form select:valid {
+    color: var(--text-color);
+}
+
+/* עדכון שקיפות רק לאופציה הראשונה בדרך אחרת */
+.contact-form select option[value=""][disabled] {
+    opacity: 0.7;
+}
+
+/* שמירה על אטימות מלאה לשאר האפשרויות */
+.contact-form select option:not([value=""]) {
+    opacity: 1;
+}
+
+/* עדכון צבע הטקסט של האופציה הראשונה */
+.contact-form select {
+    color: rgba(51, 51, 51, 0.7); /* או הצבע שאתה משתמש בו עם שקיפות */
+}
+
+/* החזרת הצבע המלא כשבוחרים אופציה */
+.contact-form select:valid {
+    color: var(--text-color);
+}
+
+/* וידוא שכל האופציות האחרות נשארות בצבע מלא */
+.contact-form select option {
+    color: var(--text-color);
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-selected {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    text-align: right;
+    background: white;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 1; /* אטימות מלאה כברירת מחדל */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 12px;
+}
+
+/* רק הטקסט ההתחלתי יהיה שקוף */
+.select-selected[data-placeholder="בחר את השירות המבוקש"] {
+    opacity: 0.7;
+}
+
+.select-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div {
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    text-align: right;
+}
+
+.select-items div:hover {
+    background-color: var(--light-gray);
+}
+
+/* כשיש בחירה - אטימות מלאה */
+.custom-select .select-selected.active {
+    opacity: 1;
 }

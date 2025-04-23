@@ -83,22 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // מילון שדות מידה לפי סוג שירות
     const dimensionsConfig = {
         pergola: [
-            { id: 'length', label: 'אורך קיר הפרגולה', unit: 'מטר' },
-            { id: 'width', label: 'רוחב קיר הפרגולה', unit: 'מטר' },
-            { id: 'height', label: 'גובה הפרגולה', unit: 'מטר' }
+            { id: 'length', label: 'אורך פרגולה', unit: 'מטר' },
+            { id: 'width', label: 'רוחב פרגולה', unit: 'מטר' },
+            { id: 'height', label: 'גובה פרגולה', unit: 'מטר' }
         ],
         grass: [
-            { id: 'length', label: 'גודל שטח לאורך', unit: 'מטר' },
-            { id: 'width', label: 'גודל שטח לרוחב', unit: 'מטר' }
+            { id: 'length', label: 'שטח לאורך', unit: 'מטר' },
+            { id: 'width', label: 'שטח לרוחב', unit: 'מטר' }
         ],
         concrete: [
-            { id: 'length', label: 'גודל שטח לאורך', unit: 'מטר' },
-            { id: 'width', label: 'גודל שטח לרוחב', unit: 'מטר' },
+            { id: 'length', label: 'שטח לאורך', unit: 'מטר' },
+            { id: 'width', label: 'שטח לרוחב', unit: 'מטר' },
         ],
         fence: [
             { id: 'length', label: 'אורך הגדר', unit: 'מטר' },
             { id: 'height', label: 'גובה הגדר', unit: 'מטר' },
-            { id: 'gates', label: 'כמות שערים', unit: 'יחידות' }
+            { id: 'gates', label: 'שערים', unit: 'יחידות' }
         ],
         trees: [
             { id: 'quantity', label: 'כמות עצים', unit: 'יחידות' },
@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: 'height', label: 'גובה מחסן', unit: 'מטר' }
         ],
         furniture: [
-            { id: 'tables', label: 'כמות שולחנות', unit: 'יחידות' },
-            { id: 'benches', label: 'כמות ספסלים', unit: 'יחידות' },
+            { id: 'tables', label: 'שולחנות', unit: 'יחידות' },
+            { id: 'benches', label: 'ספסלים', unit: 'יחידות' },
         ],
         paths: [
             { id: 'length', label: 'אורך השביל', unit: 'מטר' },
@@ -136,8 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                id="${field.id}" 
                                placeholder="${field.label}"
                                step="0.1"
-                               min="0"
-                               required>
+                               min="0">
                         <span class="unit">${field.unit}</span>
                     </div>
                 `;
@@ -231,22 +230,55 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadOptionsMenu.classList.remove('show');
     });
 
-    // פונקציה לדחיסת תמונה
+    // עדכון הטיפול בהעלאת תמונות מהמצלמה
+    cameraInput.addEventListener('change', async () => {
+        if (imagePreview.children.length < 4) {
+            const files = Array.from(cameraInput.files);
+            for (const file of files.slice(0, 1)) {
+                try {
+                    // דחיסת התמונה לפני התצוגה המקדימה
+                    const compressedFile = await compressImage(file);
+                    addImagePreview(compressedFile);
+                } catch (error) {
+                    console.error('שגיאה בדחיסת תמונה:', error);
+                    showErrorModal('שגיאה בהעלאת התמונה, אנא נסה שוב');
+                }
+            }
+        }
+    });
+
+    // עדכון הטיפול בהעלאת תמונות מהגלריה
+    fileUpload.addEventListener('change', async () => {
+        const files = Array.from(fileUpload.files);
+        const remainingSlots = 4 - imagePreview.children.length;
+        
+        for (const file of files.slice(0, remainingSlots)) {
+            try {
+                // דחיסת התמונה לפני התצוגה המקדימה
+                const compressedFile = await compressImage(file);
+                addImagePreview(compressedFile);
+            } catch (error) {
+                console.error('שגיאה בדחיסת תמונה:', error);
+                showErrorModal('שגיאה בהעלאת התמונה, אנא נסה שוב');
+            }
+        }
+    });
+
+    // עדכון פונקציית דחיסת התמונה
     async function compressImage(file) {
         return new Promise((resolve) => {
             const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = (e) => {
+            reader.onload = function(event) {
                 const img = new Image();
-                img.src = e.target.result;
-                img.onload = () => {
+                img.src = event.target.result;
+                img.onload = function() {
                     const canvas = document.createElement('canvas');
-                    // חזרה לרזולוציה הקודמת
-                    const MAX_WIDTH = 800;   // חזרה מ-1000 ל-800
-                    const MAX_HEIGHT = 800;  // חזרה מ-1000 ל-800
+                    const MAX_WIDTH = 800;
+                    const MAX_HEIGHT = 800;
                     let width = img.width;
                     let height = img.height;
 
+                    // חישוב המידות החדשות תוך שמירה על יחס התמונה
                     if (width > height) {
                         if (width > MAX_WIDTH) {
                             height *= MAX_WIDTH / width;
@@ -264,14 +296,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
                     
-                    // חזרה לאיכות הקודמת
+                    // הגדלת הדחיסה לתמונות גדולות
                     canvas.toBlob((blob) => {
                         resolve(new File([blob], file.name, {
-                            type: 'image/jpeg',
+                            type: 'image/jpeg'
                         }));
-                    }, 'image/jpeg', 0.5);  // חזרה מ-0.7 ל-0.5 (50%)
+                    }, 'image/jpeg', 0.5); // הקטנת האיכות ל-50%
                 };
             };
+            reader.readAsDataURL(file);
         });
     }
 
@@ -333,20 +366,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keydown', handleEsc);
     }
 
-    // עדכון הטיפול בהעלאת תמונות מהגלריה
-    fileUpload.addEventListener('change', () => {
-        const files = Array.from(fileUpload.files);
-        const remainingSlots = 4 - imagePreview.children.length;
-        files.slice(0, remainingSlots).forEach(addImagePreview);
-    });
-
-    // עדכון הטיפול בהעלאת תמונות מהמצלמה
-    cameraInput.addEventListener('change', () => {
-        if (imagePreview.children.length < 4) {
-            Array.from(cameraInput.files).slice(0, 1).forEach(addImagePreview);
-        }
-    });
-
     // עדכון הטיפול בשליחת הטופס
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -371,14 +390,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 to_name: 'פרגולה בכפר',
                 from_name: document.querySelector('input[name="name"]').value,
                 phone_number: document.querySelector('input[name="phone"]').value,
+                city: document.querySelector('input[name="city"]').value,
                 service_type: serviceSelect.options[serviceSelect.selectedIndex].text,
                 dimensions_info: dimensionsText,
                 message_text: document.querySelector('textarea[name="message"]').value,
                 send_time: new Date().toLocaleString('he-IL')
             };
-
-            // הדפסה לבדיקה
-            console.log('Sending email data:', emailData);
 
             // שליחת המייל הראשי
             await emailjs.send('service_fmjqu8i', 'template_8nwuv0m', emailData);
@@ -388,21 +405,55 @@ document.addEventListener('DOMContentLoaded', () => {
             if (images.length > 0) {
                 for (let i = 0; i < Math.min(images.length, 4); i++) {
                     try {
+                        // שינוי בדרך הטיפול בתמונות
                         const response = await fetch(images[i].src);
                         const blob = await response.blob();
+                        
+                        // דחיסה חזקה יותר של התמונה
                         const compressedImage = await compressImage(new File([blob], `image${i}.jpg`, { type: 'image/jpeg' }));
-                        const base64 = await new Promise((resolve) => {
-                            const reader = new FileReader();
-                            reader.onloadend = () => resolve(reader.result);
-                            reader.readAsDataURL(compressedImage);
+                        
+                        // המרה ל-base64 עם דחיסה נוספת
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        const img = new Image();
+                        
+                        await new Promise((resolve) => {
+                            img.onload = resolve;
+                            img.src = URL.createObjectURL(compressedImage);
                         });
+
+                        // הקטנה נוספת של התמונה
+                        const MAX_SIZE = 600;
+                        let width = img.width;
+                        let height = img.height;
+                        
+                        if (width > height) {
+                            if (width > MAX_SIZE) {
+                                height *= MAX_SIZE / width;
+                                width = MAX_SIZE;
+                            }
+                        } else {
+                            if (height > MAX_SIZE) {
+                                width *= MAX_SIZE / height;
+                                height = MAX_SIZE;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        // המרה ל-base64 עם דחיסה מקסימלית
+                        const base64 = canvas.toDataURL('image/jpeg', 0.3); // דחיסה ל-30% איכות
 
                         await emailjs.send('service_fmjqu8i', 'template_wq680nv', {
                             to_name: 'פרגולה בכפר',
                             from_name: emailData.from_name,
                             phone_number: emailData.phone_number,
+                            city: emailData.city,
                             image_data: base64,
                         });
+
                     } catch (error) {
                         console.error('שגיאה בשליחת תמונה:', error);
                     }
@@ -524,5 +575,39 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollIndicator.addEventListener('click', () => {
         const aboutSection = document.querySelector('#about');
         aboutSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    const customSelect = document.querySelector('.custom-select');
+    const selectSelected = customSelect.querySelector('.select-selected');
+    const selectItems = customSelect.querySelector('.select-items');
+    const originalSelect = customSelect.querySelector('select');
+
+    selectSelected.addEventListener('click', function(e) {
+        e.stopPropagation();
+        selectItems.classList.toggle('select-hide');
+        this.classList.toggle('active');
+    });
+
+    selectItems.querySelectorAll('div').forEach(item => {
+        item.addEventListener('click', function(e) {
+            const value = this.getAttribute('data-value');
+            const text = this.textContent;
+            
+            selectSelected.textContent = text;
+            selectSelected.classList.add('active');
+            // מסיר את המאפיין data-placeholder כשיש בחירה
+            selectSelected.removeAttribute('data-placeholder');
+            originalSelect.value = value;
+            selectItems.classList.add('select-hide');
+            
+            // הפעלת אירוע change על הסלקט המקורי
+            const event = new Event('change');
+            originalSelect.dispatchEvent(event);
+        });
+    });
+
+    document.addEventListener('click', function() {
+        selectItems.classList.add('select-hide');
+        selectSelected.classList.remove('active');
     });
 }); 

@@ -77,8 +77,7 @@
         <h2>השירותים שלנו</h2>
         <div class="services-grid">
             <div class="service-card">
-                <i class="fas fa-umbrella-beach"></i>
-                <h3>פרגולות</h3>
+                <i class="fas fa-store-alt"></i>           <!-- מבנה עם גג וחזית -->                <h3>פרגולות</h3>
                 <p>פרגולות מעץ ואלומיניום בהתאמה אישית</p>
             </div>
             <div class="service-card">
@@ -92,17 +91,17 @@
                 <p>בניית מחסנים מעץ ומפנל בהתאמה אישית</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-tree"></i>
+                <i class="fas fa-seedling"></i>
                 <h3>גינון והשתלה</h3>
                 <p>השתלת כל סוגי העצים ועיצוב גינות</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-border-all"></i>
+                <i class="fas fa-bars-staggered"></i>     <!-- גדר עם מוטות מדורגים -->
                 <h3>דקים וגדרות</h3>
                 <p>התקנת דקים וגדרות עץ איכותיים</p>
             </div>
             <div class="service-card">
-                <i class="fas fa-couch"></i>
+                <i class="fas fa-chair"></i>
                 <h3>ריהוט גן</h3>
                 <p>בניית שולחנות וספסלים מעץ</p>
             </div>
@@ -217,37 +216,50 @@
         <h2>צור קשר</h2>
         <div class="contact-container">
             <form class="contact-form" id="contactForm">
-                <input type="text" name="name" placeholder="שם מלא" required minlength="2">
-                <input type="tel" id="phone" name="phone" placeholder="טלפון" required>
+                <input type="text" name="name" placeholder="שם מלא*" required minlength="2">
+                <input type="tel" id="phone" name="phone" placeholder="*טלפון" required>
+                <input type="text" name="city" placeholder="עיר מגורים">
                 
-                <!-- בחירת סוג השירות -->
-                <select name="service" id="serviceSelect" required>
-                    <option value="" disabled selected hidden>בחר את השירות המבוקש</option>
-                    <option value="pergola">פרגולות מעץ ואלומיניום</option>
-                    <option value="grass">דשא סינטטי</option>
-                    <option value="concrete">יציקות בטון</option>
-                    <option value="fence">גדרות עץ</option>
-                    <option value="trees">השתלת עצים</option>
-                    <option value="storage">מחסנים</option>
-                    <option value="furniture">שולחנות וספסלים</option>
-                    <option value="paths">שבילים</option>
-                    <option value="deck">דקים</option>
-                    <option>אחר</option>
-                </select>
+                <div class="custom-select">
+                    <div class="select-selected" data-placeholder="בחר את השירות המבוקש">בחר את השירות המבוקש</div>
+                    <div class="select-items select-hide">
+                        <div data-value="pergola">פרגולות מעץ ואלומיניום</div>
+                        <div data-value="grass">דשא סינטטי</div>
+                        <div data-value="concrete">יציקות בטון</div>
+                        <div data-value="fence">גדרות עץ</div>
+                        <div data-value="trees">השתלת עצים</div>
+                        <div data-value="storage">מחסנים</div>
+                        <div data-value="furniture">שולחנות וספסלים</div>
+                        <div data-value="paths">שבילים</div>
+                        <div data-value="deck">דקים</div>
+                        <div data-value="other">אחר</div>
+                    </div>
+                    <select name="service" id="serviceSelect" style="display: none;">
+                        <option value="" disabled selected hidden>בחר את השירות המבוקש</option>
+                        <option value="pergola">פרגולות מעץ ואלומיניום</option>
+                        <option value="grass">דשא סינטטי</option>
+                        <option value="concrete">יציקות בטון</option>
+                        <option value="fence">גדרות עץ</option>
+                        <option value="trees">השתלת עצים</option>
+                        <option value="storage">מחסנים</option>
+                        <option value="furniture">שולחנות וספסלים</option>
+                        <option value="paths">שבילים</option>
+                        <option value="deck">דקים</option>
+                        <option value="other">אחר</option>
+                    </select>
+                </div>
                 
-                <!-- שדות מידות דינמיים - יוצגו בהתאם לבחירה -->
                 <div id="dimensionsFields" class="dimensions-container" style="display: none;">
                     <!-- השדות יתווספו דינמית דרך JavaScript -->
                 </div>
                 
-                <textarea name="message" placeholder="הודעה" rows="4" required minlength="0"></textarea>
+                <textarea name="message" placeholder="הודעה" rows="4" minlength="0"></textarea>
                 
-                <!-- עדכון חלק העלאת התמונות בטופס -->
                 <div class="file-upload-container">
                     <div class="upload-options-wrapper">
                         <button type="button" class="upload-options-btn" id="uploadOptionsBtn">
                             <i class="fas fa-camera"></i>
-                            הוסף תמונות
+                            הוסיפו תמונות
                         </button>
                         
                         <div class="upload-options-menu" id="uploadOptionsMenu">
@@ -262,7 +274,6 @@
                         </div>
                     </div>
 
-                    <!-- Input-ים נסתרים -->
                     <input type="file" id="fileUpload" multiple accept="image/*" style="display: none;">
                     <input type="file" id="cameraInput" capture="environment" accept="image/*" style="display: none;">
                     
@@ -291,18 +302,16 @@
         <div class="whatsapp-container">
             <a href="https://wa.me/972512177021" target="_blank" class="whatsapp-button" id="whatsappToggle">
                 <i class="fab fa-whatsapp"></i>
-                <span class="whatsapp-text">דבר איתנו בוואטסאפ</span>
+                <span class="whatsapp-text">דברו איתנו בוואטסאפ</span>
             </a>
         </div>
     </section>
 
-    <!-- הוסף את זה אחרי הטופס -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner"></div>
         <div class="loading-text">שולח את הטופס...</div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <p>© 2025 פרגולה בכפר - הגינה שלך, ברמה שלנו.</p>
@@ -331,13 +340,11 @@
         </div>
     </footer>
 
-    <!-- נוסיף את המודל בסוף הבודי, לפני הסקריפטים -->
     <div class="modal" id="imageModal">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
 
-    <!-- הוסף את זה בסוף הבודי, לפני הסקריפטים -->
     <div class="error-modal" id="errorModal">
         <div class="error-modal-content">
             <div class="error-modal-header">
