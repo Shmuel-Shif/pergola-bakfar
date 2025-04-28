@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fence: [
             { id: 'length', label: 'אורך הגדר', unit: 'מטר' },
             { id: 'height', label: 'גובה הגדר', unit: 'מטר' },
-            { id: 'gates', label: 'שערים', unit: 'יחידות' }
         ],
         trees: [
             { id: 'quantity', label: 'כמות עצים', unit: 'יחידות' },
