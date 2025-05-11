@@ -1266,32 +1266,6 @@ section[id] {
     max-width: 500px;
     position: relative;
     padding: 20px;
-    opacity: 0;
-    transform: translateX(-100px);
-    animation: slideIn 1s ease forwards;
-    animation-play-state: paused;
-}
-
-.about-image.animate {
-    animation-play-state: running;
-}
-
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* התאמה למובייל */
-@media (max-width: 768px) {
-    .about-image {
-        transform: translateX(-50px); /* מרחק קצר יותר במובייל */
-    }
 }
 
 .team-image {

@@ -633,47 +633,4 @@ document.addEventListener('DOMContentLoaded', () => {
         selectItems.classList.add('select-hide');
         selectSelected.classList.remove('active');
     });
-
-    // פונקציה שמחכה עד שהגלילה מסתיימת ואז מרעננת
-    function scrollAndReload() {
-        const startPosition = window.pageYOffset;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // בודק אם הגענו לראש העמוד
-        const checkIfScrollComplete = setInterval(() => {
-            if (window.pageYOffset === 0) {
-                clearInterval(checkIfScrollComplete);
-                window.location.reload();
-            }
-        }, 100);
-
-        // timeout ביטחון במקרה שמשהו השתבש
-        setTimeout(() => {
-            clearInterval(checkIfScrollComplete);
-            window.location.reload();
-        }, 2000);
-    }
-
-    // הוספת אירוע לחיצה על הלוגו
-    const logo = document.querySelector('.logo');
-    logo.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollAndReload();
-    });
-
-    // הוספת אירוע לחיצה על הלינק של דף הבית
-    const homeLink = document.querySelector('.nav-desktop a[href="#home"]');
-    homeLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollAndReload();
-    });
-
-    // הוספת אירוע גם לתפריט המובייל
-    const mobileHomeLink = document.querySelector('.nav-mobile a[href="#home"]');
-    if (mobileHomeLink) {
-        mobileHomeLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollAndReload();
-        });
-    }
 }); 
