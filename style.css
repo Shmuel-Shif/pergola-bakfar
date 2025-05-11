@@ -1049,6 +1049,7 @@ h2:hover::after {
 .swiper-pagination {
     position: static !important;
     margin-top: 15px !important;
+    top: 0px !important;
 }
 
 .swiper-pagination-bullet {
@@ -1057,6 +1058,7 @@ h2:hover::after {
     margin: 0 4px !important;
     background: var(--primary-color) !important;
     opacity: 0.5;
+    
 }
 
 .swiper-pagination-bullet-active {
