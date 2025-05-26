@@ -1195,6 +1195,7 @@ section[id] {
 
 #services {
     scroll-margin-top: 80px;
+    background: var(--light-gray);
 }
 
 #gallery {
