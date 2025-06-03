@@ -475,8 +475,8 @@ h2:hover::after {
 /* Whatsapp Styles */
 .whatsapp-container {
     position: fixed;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 4rem;
+    left: 0.7rem;
     z-index: 1000;
 }
 
@@ -709,8 +709,8 @@ h2:hover::after {
     }
 
     .whatsapp-container {
-        left: 4px;
-        bottom: 3rem;
+        left: 8px;
+        bottom: 62px;
     }
 
     .whatsapp-button {
@@ -1820,3 +1820,23 @@ a {
     padding: 15px;
     min-height: 44px;
 }
+
+
+body.keyboard-navigation.trigger-size-small #enable-toolbar #enable-toolbar-trigger .keyboard-shorcut, body.trigger-size-small #enable-toolbar svg#enable-toolbar-trigger-svg {
+    position: absolute !important;
+    bottom: 10px !important;
+    left: -4px !important;
+}
+
+#enable-toolbar-trigger svg {
+    width: 70px;
+    height: 40px;
+}
+
+@media (max-width: 768px) {
+    #enable-toolbar-trigger svg {
+        width: 55px;
+        height: 33px;
+    }
+}
+
