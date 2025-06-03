@@ -1,0 +1,1822 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a5f1c;      /* ירוק כהה יותר - ניגודיות 4.5:1 */
+    --secondary-color: #0d4f0f;    /* ירוק כהה אף יותר */
+    --text-color: #333333;         /* טקסט כהה יותר */
+    --light-text: #555555;         /* טקסט אפור כהה יותר */
+    --light-gray: #f5f5f5;
+    --white: #ffffff;
+    --link-color: #0d47a1;         /* כחול כהה לקישורים - ניגודיות טובה */
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: var(--white);
+    padding: 0.3rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.logo-content {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo-img {
+    height: 80px;
+    width: auto;
+}
+
+.nav-desktop ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-desktop a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s;
+    padding: 15px;
+    display: inline-block;
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.nav-desktop a:hover {
+    color: var(--primary-color);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.7)), url('../images/gallery/pergola6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* אפקט פראלקס */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 2rem;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 2rem;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: var(--secondary-color);
+}
+
+/* Sections General */
+section {
+    padding: 5rem 2rem;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+h2::before,
+h2::after {
+    content: '';
+    height: 2px;
+    width: 50px;
+    background: var(--primary-color);
+    display: block;
+    transition: width 0.3s ease;
+}
+
+/* אפקט hover - הקווים מתארכים */
+h2:hover::before,
+h2:hover::after {
+    width: 80px;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+    h2::before,
+    h2::after {
+        width: 30px;
+    }
+    
+    h2:hover::before,
+    h2:hover::after {
+        width: 50px;
+    }
+}
+
+/* Services Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+}
+
+.service-card {
+    text-align: center;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+    min-height: 200px;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* התאמה למסכים בינוניים */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+}
+
+/* התאמה לטאבלט */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .service-card i {
+        font-size: 2rem;
+    }
+
+    .hero {
+        background-attachment: scroll; /* מבטל את הפראלקס במובייל */
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .nav-desktop {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem;
+        transform: translateX(-100%);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-desktop.show {
+        transform: translateX(0);
+        margin-top: -2px;
+    }
+
+    .nav-desktop a {
+        display: block;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.137);
+    }
+
+    .nav-desktop a:hover {
+        color: var(--primary-color);
+        transform: translateX(5px);
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .logo-img {
+        height: 60px;
+    }
+
+    /* הקטנת הרווח בין הלוגו לכפתור התפריט */
+    .hamburger {
+        margin-right: 0.3rem;
+    }
+
+    .gallery-container {
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .swiper-slide {
+        width: 75% !important;
+        transition: all 0.3s ease;
+        transform-origin: center;
+        z-index: 1;
+    }
+    
+    .swiper-slide-active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        z-index: 3;
+    }
+    
+    .swiper-slide-prev {
+        opacity: 0.5;
+        transform: translateX(25%) scale(0.85) translateY(30px);
+        z-index: 2;
+    }
+    
+    .swiper-slide-next {
+        opacity: 0.5;
+        transform: translateX(-25%) scale(0.85) translateY(30px);
+        z-index: 2;
+    }
+    
+    /* הסתרת החצים במובייל */
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
+    }
+    
+    /* התאמת הפגינציה */
+    .swiper-pagination {
+        position: relative !important;
+        bottom: -10px !important;
+    }
+
+    /* הוספת אפקט צל לסליידים */
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right {
+        background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,0)) !important;
+    }
+}
+
+/* התאמה למובייל */
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .service-card {
+        padding: 1.2rem;
+    }
+}
+
+/* Contact Section */
+.contact {
+    background: var(--light-gray);
+    text-align: center;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* עדכון סגנון הפוקוס לכל שדות הטופס */
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* עדכון סגנון בסיסי לכל השדות */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    text-align: right;
+}
+
+/* עדכון סגנון הפלייסהולדר של הסלקט */
+.contact-form select option[value=""] {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* עדכון צבע הטקסט בשדות */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    color: var(--text-color);
+}
+
+/* עיצוב לפלייסהולדר */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    text-align: right;
+    direction: rtl;
+}
+
+.submit-button {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.submit-button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.contact-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Whatsapp Styles */
+.whatsapp-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 1000;
+}
+
+.whatsapp-button {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    background: #2d8e46;
+    transform: translateY(-2px);
+}
+
+.whatsapp-button i {
+    font-size: 1.2rem;
+}
+
+.whatsapp-popup {
+    position: absolute;
+    bottom: calc(100% + 1rem);
+    left: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    width: 250px;
+    display: none;
+}
+
+.whatsapp-popup.show {
+    display: block;
+}
+
+.whatsapp-popup-header {
+    padding: 1rem;
+    background: #075E54;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-popup {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.whatsapp-contacts {
+    padding: 0.5rem;
+}
+
+.whatsapp-contact {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.whatsapp-contact:hover {
+    background: #f5f5f5;
+}
+
+.whatsapp-contact i {
+    color: #25D366;
+    font-size: 1.5rem;
+}
+
+.whatsapp-text {
+    font-size: 1rem;
+}
+
+/* Footer */
+.footer {
+    background: var(--text-color);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    padding: 12px;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* צבעים ספציפיים בהובר */
+.social-links a:hover .fa-instagram {
+    color: #fff; /* טקסט לבן */
+    text-shadow:
+        0 0 5px #E1306C,       /* ורוד פוקסיה */
+        1px 1px 3px #F56040,   /* כתום */
+        -1px -1px 3px #FFD700;  /* זהב עדין */
+}
+
+.social-links a:hover .fa-pinterest {
+    color: #ffffff; /* בסיס - לבן */
+    text-shadow: 
+        0 0 5px #E60023,      /* זוהר אדום */
+        1px 1px 2px #E60023,  /* הצללה אדומה */
+       -1px -1px 2px #E60023;
+}
+
+.social-links a:hover .fa-tiktok {
+    color: #ffffff; /* טקסט לבן במרכז */
+    text-shadow: 
+        1px 1px 5px #00f2ea,   /* תכלת */
+       -1px -1px 5px #ff0050,  /* אדום-ורוד */
+        0 0 2px #ffffff;      /* זוהר לבן */
+}
+
+.social-links a:hover .fa-facebook {
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px #1877f2,
+        1px 1px 2px #1877f2,
+        -1px -1px 2px #1877f2;
+}
+
+/* Mobile Navigation */
+.nav-desktop {
+    transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 8px 1.3rem 0px 1rem;
+        justify-content: space-between;
+    }
+
+    .hamburger {
+        display: block;
+        order: 1;
+        font-size: 1.2rem;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .nav-desktop {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 1rem;
+        transform: translateX(-100%);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-desktop ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav-desktop li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-desktop a {
+        display: block;
+        padding: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.137);
+    }
+
+    .nav-desktop a:hover {
+        color: var(--primary-color);
+        transform: translateX(5px);
+    }
+
+    .contact-container {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .info-item {
+        width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+
+    .submit-button {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .whatsapp-container {
+        left: 8px;
+        bottom: 1rem;
+    }
+
+    .whatsapp-button {
+        padding: 0.8rem;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .whatsapp-button i {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .whatsapp-text {
+        display: none;
+    }
+
+    .whatsapp-popup {
+        bottom: calc(100% + 0.5rem);
+        width: 200px;
+    }
+
+    .whatsapp-popup-header {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .close-popup {
+        font-size: 1.2rem;
+    }
+
+    .whatsapp-contacts {
+        padding: 0.3rem;
+    }
+
+    .whatsapp-contact {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+        gap: 0.7rem;
+    }
+
+    .whatsapp-contact i {
+        font-size: 1.2rem;
+    }
+
+    .gallery {
+        padding: 2rem 1rem;
+    }
+
+    .gallery-container {
+        padding: 0 45px;
+        max-width: 320px;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 40% !important;
+        width: 25px !important;
+        height: 25px !important;
+    }
+    
+    .swiper-button-next {
+        right: 10px !important;
+    }
+    
+    .swiper-button-prev {
+        left: 10px !important;
+    }
+
+    .swiper-pagination {
+        margin-top: 12px !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 6px !important;
+        height: 6px !important;
+        margin: 0 3px !important;
+    }
+
+    .swiper-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .slide-overlay {
+        padding: 0.7rem;
+    }
+
+    .slide-overlay h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .slide-overlay p {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+
+    section[id] {
+        scroll-margin-top: 80px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .gallery-container {
+        padding: 0 20px;
+        max-width: 280px;
+    }
+
+    .slide-overlay {
+        padding: 0.6rem;
+    }
+
+    .slide-overlay h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .slide-overlay p {
+        font-size: 0.7rem;
+    }
+}
+
+/* Thanks Page Styles */
+.thanks-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--light-gray);
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.thanks-content {
+    text-align: center;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 90%;
+}
+
+.thanks-content i.fa-check-circle {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.thanks-content h1 {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.thanks-content p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.back-button i {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+    .thanks-content {
+        padding: 2rem;
+    }
+
+    .thanks-content i.fa-check-circle {
+        font-size: 3rem;
+    }
+
+    .thanks-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .thanks-content p {
+        font-size: 1rem;
+    }
+}
+
+/* הוסף את זה בקובץ הסגנון */
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-overlay.show {
+    display: flex;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+.loading-text {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Gallery Styles */
+.gallery {
+    padding: 4rem 2rem;
+    background: var(--light-gray);
+}
+
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 80px;
+}
+
+.mySwiper {
+    width: 100%;
+    direction: ltr;
+}
+
+.swiper-wrapper {
+    margin-bottom: 40px;
+}
+
+.swiper-slide {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    direction: rtl;
+    cursor: pointer;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 1rem;
+    color: white;
+}
+
+.slide-overlay h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.slide-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* עיצוב החצים */
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute !important;
+    top: 41% !important;
+    transform: translateY(-50%) !important;
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    border-radius: 50% !important;
+    color: var(--primary-color) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.swiper-button-next {
+    right: 20px !important;
+}
+
+.swiper-button-prev {
+    left: 20px !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 0.9rem !important;
+    font-weight: bold;
+    margin: 0 !important;
+}
+
+/* עיצוב הנקודות */
+.swiper-pagination {
+    position: static !important;
+    margin-top: 15px !important;
+    top: 0px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    margin: 0 4px !important;
+    background: var(--primary-color) !important;
+    opacity: 0.5;
+    
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .swiper-slide {
+        width: 75% !important;
+        transition: all 0.3s ease;
+        transform-origin: center;
+        z-index: 1;
+    }
+    
+    .swiper-slide-active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        z-index: 3;
+    }
+    
+    .swiper-slide-prev {
+        opacity: 0.5;
+        transform: translateX(25%) scale(0.85) translateY(30px);
+        z-index: 2;
+    }
+    
+    .swiper-slide-next {
+        opacity: 0.5;
+        transform: translateX(-25%) scale(0.85) translateY(30px);
+        z-index: 2;
+    }
+    
+    /* הסתרת החצים במובייל */
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
+    }
+    
+    /* התאמת הפגינציה */
+    .swiper-pagination {
+        position: relative !important;
+        bottom: -10px !important;
+    }
+
+    /* הוספת אפקט צל לסליידים */
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right {
+        background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,0)) !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .gallery-container {
+        padding: 0 30px;
+        max-width: 280px;
+    }
+
+    .slide-overlay {
+        padding: 0.6rem;
+    }
+
+    .slide-overlay h3 {
+        font-size: 0.85rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .slide-overlay p {
+        font-size: 0.7rem;
+    }
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-close {
+    position: absolute;
+    right: 53px;
+    top: 25px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.modal.show {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/* מיקום כללי לכל הסקציות */
+section[id] {
+    scroll-margin-top: 100px;
+}
+
+/* התאמות ספציפיות לכל סקציה */
+#about {
+    scroll-margin-top: 90px;
+}
+
+#services {
+    scroll-margin-top: 80px;
+    background: var(--light-gray);
+}
+
+#gallery {
+    scroll-margin-top: 85px;
+}
+
+#contact {
+    scroll-margin-top: 70px;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+    section[id] {
+        scroll-margin-top: 80px;
+    }
+    
+    #about {
+        scroll-margin-top: 60px;
+    }
+    
+    #services {
+        scroll-margin-top: 60px;
+    }
+    
+    #gallery {
+        scroll-margin-top: 65px;
+    }
+    
+    #contact {
+        scroll-margin-top: 50px;
+    }
+    
+    .modal-close {
+        right: 16px;
+        top: 50px;
+    }
+}
+
+/* About Section */
+.about {
+    background: var(--light-gray);
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 1.2rem;
+}
+
+.about-text {
+    flex: 1;
+    text-align: right;
+}
+
+.about-text p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    white-space: pre-line;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+    padding: 20px;
+}
+
+.team-image {
+    width: 100%;
+    height: auto;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;  /* צורה אורגנית */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: border-radius 0.3s ease;
+}
+
+/* אפקט hover עדין */
+.team-image:hover {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+}
+
+/* התאמה למסכים קטנים */
+@media (max-width: 768px) {
+    .about-content {
+        display: flex;
+        gap: 0.2rem;
+        flex-direction: column;
+    }
+
+    .about-text,
+    .about-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.4;
+        padding: 0;
+        text-align: center;
+    }
+
+    .about-image {
+        padding: 10px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .team-image {
+        width: 66%;
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator.hide {
+    opacity: 0;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
+/* Contact Form New Styles */
+.contact-form select {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    text-align: right;
+    background: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 12px;
+}
+
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* עדכון סגנון שדה התיאור לשירות 'אחר' */
+.contact-form input[id="description"] {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.dimensions-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dimension-field {
+    position: relative;
+}
+
+.dimension-field input {
+    width: 100%;
+    padding-left: 3rem;
+}
+
+.dimension-field .unit {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+}
+
+.file-upload-container {
+    text-align: center;
+    width: 100%;
+}
+
+.upload-options-wrapper {
+    position: relative;
+    display: inline-block; /* חשוב שיהיה inline-block */
+}
+
+.upload-options-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.upload-options-btn:hover {
+    background: var(--secondary-color);
+}
+
+.upload-options-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    z-index: 100;
+    min-width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    margin-top: 5px;
+}
+
+.upload-options-menu.show {
+    display: block;
+}
+
+.upload-option {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: none;
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background-color 0.2s;
+    border-radius: 8px;
+    color: var(--text-color);
+}
+
+.upload-option:hover {
+    background: var(--light-gray);
+}
+
+.upload-option i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.image-preview-container {
+    margin-top: 1.5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+.image-preview {
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-preview .remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.image-preview .remove-image:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+/* התאמה למסכים גדולים */
+@media (min-width: 768px) {
+    .image-preview-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* התאמה למובייל */
+@media (max-width: 767px) {
+    .image-preview-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .image-preview {
+        width: 120px;
+        height: 100px;
+    }
+}
+
+/* Error Modal Styles */
+.error-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-modal.show {
+    display: flex;
+}
+
+.error-modal-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 90%;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.error-modal-header {
+    margin-bottom: 1rem;
+}
+
+.error-modal-header i {
+    color: #ff4444;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.error-modal-header h3 {
+    color: var(--text-color);
+    margin: 0;
+}
+
+.error-modal p {
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+.error-modal-close {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.error-modal-close:hover {
+    background: var(--secondary-color);
+}
+
+@media (max-width: 480px) {
+    .error-modal-content {
+        width: 280px;
+        padding: 1.2rem;
+    }
+    
+    .error-modal-header i {
+        font-size: 1.8rem;
+    }
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.contact-form select::placeholder {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    color: var(--text-color);
+}
+
+.contact-form input[name="city"] {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    text-align: right;
+    background: white;
+    transition: border-color 0.3s;
+    color: var(--text-color);
+}
+
+.contact-form input[name="city"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.contact-form select:invalid {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* עדכון סגנון שדה התיאור לשירות 'אחר' */
+.contact-form input[id="description"] {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* עדכון שמירה על צבע רגיל לאפשרויות שנבחרו */
+.contact-form select:valid {
+    color: var(--text-color);
+}
+
+/* עדכון שקיפות רק לאופציה הראשונה בדרך אחרת */
+.contact-form select option[value=""][disabled] {
+    opacity: 0.7;
+}
+
+/* שמירה על אטימות מלאה לשאר האפשרויות */
+.contact-form select option:not([value=""]) {
+    opacity: 1;
+}
+
+/* עדכון צבע הטקסט של האופציה הראשונה */
+.contact-form select {
+    color: rgba(51, 51, 51, 0.7); /* או הצבע שאתה משתמש בו עם שקיפות */
+}
+
+/* החזרת הצבע המלא כשבוחרים אופציה */
+.contact-form select:valid {
+    color: var(--text-color);
+}
+
+/* וידוא שכל האופציות האחרות נשארות בצבע מלא */
+.contact-form select option {
+    color: var(--text-color);
+}
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.select-selected {
+    width: 100%;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Assistant', sans-serif;
+    font-size: 1rem;
+    text-align: right;
+    background: white;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 1; /* אטימות מלאה כברירת מחדל */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 12px;
+}
+
+/* רק הטקסט ההתחלתי יהיה שקוף */
+.select-selected[data-placeholder="בחר את השירות המבוקש"] {
+    opacity: 0.7;
+}
+
+.select-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div {
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    text-align: right;
+}
+
+.select-items div:hover {
+    background-color: var(--light-gray);
+}
+
+/* כשיש בחירה - אטימות מלאה */
+.custom-select .select-selected.active {
+    opacity: 1;
+}
+
+/* הוספת השהייה לכל כרטיסייה */
+.service-card:nth-child(1) { transition-delay: 0.1s; }
+.service-card:nth-child(2) { transition-delay: 0.2s; }
+.service-card:nth-child(3) { transition-delay: 0.3s; }
+.service-card:nth-child(4) { transition-delay: 0.4s; }
+.service-card:nth-child(5) { transition-delay: 0.5s; }
+.service-card:nth-child(6) { transition-delay: 0.6s; }
+.service-card:nth-child(7) { transition-delay: 0.7s; }
+.service-card:nth-child(8) { transition-delay: 0.8s; }
+
+/* עיצוב הפוטר */
+.footer-content {
+    position: relative;  /* כדי שנוכל למקם את הצהרת הנגישות */
+}
+
+/* מיקום הצהרת הנגישות */
+.footer-accessibility {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+.accessibility-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+    padding: 8px 15px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+}
+
+.accessibility-link:hover {
+    color: #ff6b00;
+    border-color: #ff6b00;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+    .footer-accessibility {
+        position: static;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+/* עדכון צבעי קישורים */
+a {
+    color: var(--link-color);
+}
+
+/* עדכון צבעי רקע וטקסט בכפתורים */
+.cta-button {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* עדכון צבעי טקסט בתפריט */
+.nav-desktop a {
+    color: var(--text-color);
+}
+
+/* הוספת אפקט לחיצה לאפשרות ניגודיות */
+.accessibility-option button {
+    padding: 15px;
+    min-height: 44px;
+}

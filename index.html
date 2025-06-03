@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logo/logo-title.png">
     <title>פרגולה בכפר</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <meta name="description" content="פרגולה בכפר - התקנה מקצועית של פרגולות, דשא סינטטי וכל התקני החצר. מומחים בהקמת גינות מאפס למאה, כולל דקים, גדרות עץ ומחסנים בהתאמה אישית.">
 </head>
 <body>
     <!-- Header -->
@@ -41,7 +42,7 @@
         <div class="hero-content">
             <h1>הגינה שלך - ברמה שלנו</h1>
             <p>התקנה מקצועית של פרגולות, דשא סינטטי וכל התקני החצר</p>
-            <a href="#contact" class="cta-button">לקבלת הצעת מחיר</a>
+            <a href="#contact" class="cta-button" aria-label="לחץ לקבלת הצעת מחיר">לקבלת הצעת מחיר</a>
         </div>
         <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
@@ -81,8 +82,9 @@
     <section id="services" class="services">
         <h2>השירותים שלנו</h2>
         <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-store-alt"></i>           <!-- מבנה עם גג וחזית -->                <h3>פרגולות</h3>
+            <div class="service-card" aria-label="מידע על שירות פרגולות">
+                <i class="fas fa-store-alt" aria-hidden="true"></i>
+                <h3>פרגולות</h3>
                 <p>פרגולות מעץ בהתאמה אישית</p>
             </div>
             <div class="service-card">
@@ -130,97 +132,101 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola2.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola2.jpg" alt="פרגולת עץ מעוצבת עם הצללה מלאה במרפסת בית פרטי">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה מעץ איכותי להצללה והגנה מגשם</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola4.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola4.jpg" 
+                             alt="פרגולה מודרנית בצבע חום כהה עם דק עץ מותאם ותאורה נסתרת בתקרה"
+                             loading="lazy"
+                             width="800"
+                             height="600">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה עם עיצוב מיוחד ומקצועי</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola5.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola5.jpg" alt="התקנת פרגולה מעוצבת להוספת יופי לחלל החיצוני">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה בתוספת עץ לייפות</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola16.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola16.jpg" alt="דשא סינטטי מעוצב שמדמה מראה טבעי">
                         <div class="slide-overlay">
                             <p>דשא סינטטי שנראה טבעי כל השנה</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola6.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola6.jpg" alt="פרגולה מעץ להגנה מהשמש במרפסת">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה במרפסת להגנה מהשמש</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola3.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola3.jpg" alt="פרגולה מודרנית בעיצוב קלאסי ונקי">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה מודרנית בעיצוב קלאסי ונקי</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola7.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola7.jpg" alt="התקנת דשא סינטטי איכותי בגינה">
                         <div class="slide-overlay">
                             <p>הרכבת דשא סינטטי ברמה גבוהה ביותר</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola8.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola8.jpg" alt="בניית ספסל מעץ עם פרגולה לסככת צל">
                         <div class="slide-overlay">
                             <p>בניית ספסל מעץ עם סככת צל</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola1.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola1.jpg" alt="פרגולה בצבעים בהירים ונקיים">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה בצבעים נקיים לעין</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola9.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola9.jpg" alt="פרגולה עם סנטף מיוחד נגד שמש וגשמים">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה עם סנטף מיוחד להגנה משמש וגשמים</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola10.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola10.jpg" alt="התקנת דק מוגבה כולל מעקה בטיחות">
                         <div class="slide-overlay">
                             <p>התקנת דק בגובה בתוספת מעקה</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola11.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola11.jpg" alt="פרגולה עם הצללה חלקית לעיצוב החצר">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה לייפות והצללה חלקית</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola15.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola15.jpg" alt="פרגולה ודק בעיצוב מדויק ומרשים">
                         <div class="slide-overlay">
                             <p>התקנת פרגולה פלוס דק בדיוק ועיצוב נקי ומרשים </p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola12.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola12.jpg" alt="ספסל עץ לגינה לפי מידות הלקוח">
                         <div class="slide-overlay">
                             <p>בניית ספסל לגינה לפי מידות</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola14.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola14.jpg" alt="שילוב דשא סינטטי וגדר במבוק איכותיים">
                         <div class="slide-overlay">
                             <p>שמדובר בדשא וגדר במבוק אצלנו אין משחקים</p>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="images/gallery/pergola13.jpg" alt="פרגולה מעץ">
+                        <img src="images/gallery/pergola13.jpg" alt="בנייה אישית של מוצרים מעץ לפי דרישת לקוח">
                         <div class="slide-overlay">
                             <p>בנית מוצרים מעץ לפי צריכת הלקוח</p>
                         </div>
@@ -229,8 +235,8 @@
                 <div class="swiper-pagination"></div>
             </div>
             <!-- החצים מחוץ לסליידר -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next" aria-label="התמונה הבאה"></div>
+            <div class="swiper-button-prev" aria-label="התמונה הקודמת"></div>
         </div>
     </section>
 
@@ -344,22 +350,26 @@
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61575315639346" 
                    target="_blank" 
-                   rel="noopener">
+                   rel="noopener"
+                   aria-label="עקבו אחרינו בפייסבוק">
                     <i class="fab fa-facebook"></i>
                 </a>
                 <a href="https://www.instagram.com/pergula_bakfar/" 
                    target="_blank" 
-                   rel="noopener">
+                   rel="noopener"
+                   aria-label="עקבו אחרינו באינסטגרם">
                     <i class="fab fa-instagram"></i>
                 </a>
                 <a href="https://www.pinterest.com/pergulabakfar/_created/" 
                    target="_blank" 
-                   rel="noopener">
+                   rel="noopener"
+                   aria-label="עקבו אחרינו בפינטרסט">
                     <i class="fab fa-pinterest"></i>
                 </a>
                 <a href="https://www.tiktok.com/@pergula_bakfar_770" 
                    target="_blank" 
-                   rel="noopener">
+                   rel="noopener"
+                   aria-label="עקבו אחרינו בטיקטוק">
                     <i class="fab fa-tiktok"></i>
                 </a>
             </div>
@@ -436,7 +446,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/accessibility.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
