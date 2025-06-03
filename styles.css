@@ -1,0 +1,799 @@
+.accessibility-menu {
+    position: fixed;
+    left: 20px;
+    bottom: 80px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 9999;
+    direction: rtl;
+    width: 250px;
+}
+
+.accessibility-option button {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f5f5f5;
+    cursor: pointer;
+    text-align: right;
+}
+
+#accessibility-btn {
+    position: fixed;
+    left: 18px;
+    bottom: 85px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+}
+
+.accessibility-menu {
+    position: fixed;
+    left: 55px;
+    bottom: 127px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 9999;
+    direction: rtl;
+    width: 250px !important;
+}
+
+.accessibility-option {
+    margin: 10px 0;
+}
+
+.accessibility-option button {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f5f5f5;
+    cursor: pointer;
+    text-align: right;
+}
+
+.accessibility-option button:hover {
+    background: #e5e5e5;
+}
+
+/* מצב ניגודיות גבוהה - שיפור משמעותי */
+.high-contrast {
+    background-color: black !important;
+    color: white !important;
+}
+
+.high-contrast a {
+    color: yellow !important;
+}
+
+.high-contrast button {
+    background-color: #ffffff !important;
+    color: black !important;
+    border: 2px solid white !important;
+}
+
+.high-contrast img {
+    filter: grayscale(100%) contrast(150%) brightness(120%) !important;
+}
+
+.high-contrast .header {
+    background-color: #333 !important;
+    border-bottom: 2px solid white !important;
+}
+
+.high-contrast .nav-desktop ul li a:hover {
+    background-color: white !important;
+    color: black !important;
+}
+
+.high-contrast .hero {
+    position: relative !important;
+}
+
+.high-contrast .hero::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    z-index: 1 !important;
+}
+
+.high-contrast .hero-content {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.high-contrast .service-card {
+    background-color: #333 !important;
+    border: 2px solid white !important;
+}
+
+.high-contrast .contact-form input,
+.high-contrast .contact-form textarea {
+    background-color: #ffffff !important;
+    color: white !important;
+    border: 2px solid white !important;
+}
+
+/* שיפור ניגודיות באזור "קצת עלינו" */
+.high-contrast .about {
+    background-color: #222 !important;
+}
+
+.high-contrast .about h2 {
+    color: white !important;
+    border-bottom: 2px solid white !important;
+}
+
+.high-contrast .about-text p {
+    color: white !important;
+    background-color: #333 !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+}
+
+/* שיפור ניגודיות בגלריית עבודות */
+.high-contrast .gallery {
+    background-color: #222 !important;
+}
+
+.high-contrast .gallery h2 {
+    color: white !important;
+}
+
+.high-contrast .swiper-slide {
+    background-color: #333 !important;
+}
+
+.high-contrast .slide-overlay {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+}
+
+.high-contrast .swiper-button-next,
+.high-contrast .swiper-button-prev {
+    background-color: white !important;
+    color: black !important;
+    padding: 20px !important;
+    border-radius: 50% !important;
+}
+
+.high-contrast .swiper-pagination-bullet {
+    background: white !important;
+    opacity: 0.5 !important;
+}
+
+.high-contrast .swiper-pagination-bullet-active {
+    opacity: 1 !important;
+}
+
+/* שיפור טיפול בתמונות במצב ניגודיות גבוהה */
+.high-contrast .swiper-slide img {
+    filter: grayscale(100%) contrast(170%) brightness(110%) !important;
+    border: 3px solid white !important;
+}
+
+/* שיפור טיפול באייקונים במצב ניגודיות גבוהה */
+.high-contrast .service-card i {
+    color: yellow !important;
+}
+
+/* טיפול בלוגו */
+.high-contrast .logo {
+    background-color: transparent !important;
+}
+
+.high-contrast .logo-content {
+    background-color: transparent !important;
+}
+
+.high-contrast .logo-text {
+    color: white !important;
+}
+
+.high-contrast .logo img {
+    filter: brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(0deg) !important;
+    opacity: 1 !important;
+}
+
+/* שיפור טיפול באייקונים בפוטר */
+.high-contrast .info-item i,
+.high-contrast .fas,
+.high-contrast .fab {
+    color: rgb(218, 218, 39) !important;
+}
+
+/* שיפור ניגודיות בטופס יצירת קשר */
+.high-contrast .contact {
+    background-color: #222 !important;
+}
+
+.high-contrast .contact h2 {
+    color: white !important;
+}
+
+.high-contrast .contact-form {
+    background-color: #333 !important;
+    border: 2px solid white !important;
+}
+
+.high-contrast .custom-select {
+    background-color: #333 !important;
+    border: 2px solid white !important;
+    color: white !important;
+}
+
+.high-contrast .select-items {
+    background-color: #444 !important;
+    border: 2px solid white !important;
+}
+
+.high-contrast .select-items div:hover {
+    background-color: #555 !important;
+}
+
+.high-contrast .contact-info {
+    background-color: #333 !important;
+    border: 2px solid white !important;
+}
+
+.high-contrast .info-item {
+    border-bottom: 1px solid white !important;
+}
+
+/* שיפור ניגודיות בכותרת ראשית */
+.high-contrast .hero-content h1,
+.high-contrast .hero-content p {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    padding: 10px 20px !important;
+    border-radius: 8px !important;
+}
+
+.high-contrast .cta-button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid white !important;
+}
+
+.high-contrast .cta-button:hover {
+    background-color: yellow !important;
+    color: black !important;
+}
+
+/* שיפור ניגודיות בפוטר */
+.high-contrast .footer {
+    background-color: #333 !important;
+    border-top: 2px solid white !important;
+}
+
+.high-contrast .footer-content {
+    color: white !important;
+}
+
+.high-contrast .social-links a {
+    color: black !important;
+}
+
+.high-contrast .social-links a:hover {
+    background-color: yellow !important;
+}
+
+/* שיפור ניגודיות בכפתור WhatsApp */
+.high-contrast .whatsapp-button {
+    background-color: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
+    border: 2px solid white !important;
+}
+
+.high-contrast .whatsapp-button:hover {
+    background-color: yellow !important;
+}
+
+/* שיפור ניווט מקלדת */
+.keyboard-navigation *:focus {
+    outline: 3px solid #ff6b00 !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.4) !important;
+}
+
+.keyboard-navigation button:focus,
+.keyboard-navigation a:focus {
+    position: relative;
+    z-index: 1000;
+    transform: scale(1.05);
+}
+
+/* מצב פונט קריא */
+.readable-font {
+    font-family: Arial, sans-serif !important;
+}
+
+/* ביטול אנימציות משופר */
+.no-animations *,
+.no-animations *:before,
+.no-animations *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+
+/* מסיר את ההסתרה של התמונות */
+.no-animations .scroll-indicator {
+    display: none !important;
+}
+
+/* הוספת סטייל ספציפי לגלריה במצב ללא אנימציות */
+.no-animations .swiper-slide {
+    /* מבטל את ההסתרה */
+    display: block !important;
+    /* מבטל אנימציות ספציפיות של הסליידר */
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* ביטול אנימציות נוספות של הסליידר */
+.no-animations .swiper-wrapper {
+    transform: none !important;
+    transition: none !important;
+}
+
+.no-animations .swiper-pagination,
+.no-animations .swiper-button-next,
+.no-animations .swiper-button-prev {
+    transition: none !important;
+}
+
+/* ניגודיות צבעונית */
+.high-contrast-color {
+    background-color: #000066 !important;
+    color: #ffff00 !important;
+}
+
+.high-contrast-color a {
+    color: #00ff00 !important;
+}
+
+.high-contrast-color button {
+    background-color: #ffff00 !important;
+    color: #000066 !important;
+    border: 2px solid #ffff00 !important;
+}
+
+.high-contrast-color img {
+    filter: saturate(150%) contrast(150%) brightness(110%) !important;
+}
+
+.high-contrast-color .header {
+    background-color: #000099 !important;
+    border-bottom: 2px solid #ffff00 !important;
+}
+
+.high-contrast-color .service-card {
+    background-color: #000099 !important;
+    border: 2px solid #00ff00 !important;
+}
+
+.high-contrast-color .about,
+.high-contrast-color .gallery,
+.high-contrast-color .contact {
+    background-color: #000066 !important;
+}
+
+.high-contrast-color .about-text p {
+    background-color: #000099 !important;
+    color: #ffff00 !important;
+}
+
+.high-contrast-color .hero-content h1,
+.high-contrast-color .hero-content p {
+    color: #ffff00 !important;
+    background-color: rgba(0, 0, 102, 0.9) !important;
+}
+
+.high-contrast-color .cta-button {
+    background-color: #ffff00 !important;
+    color: #000066 !important;
+    border: 2px solid #00ff00 !important;
+}
+
+.high-contrast-color .cta-button:hover {
+    background-color: #00ff00 !important;
+}
+
+.high-contrast-color .footer {
+    background-color: #000099 !important;
+    border-top: 2px solid #ffff00 !important;
+}
+
+/* טיפול באייקונים בניגודיות צבעונית */
+.high-contrast-color .service-card i,
+.high-contrast-color .info-item i,
+.high-contrast-color .fas,
+.high-contrast-color .fab {
+    color: #00ff00 !important;
+}
+
+.high-contrast-color .logo img {
+    filter: brightness(0) invert(1) sepia(100%) saturate(10000%) hue-rotate(100deg) !important;
+    opacity: 1 !important;
+}
+
+/* מניעת השפעת שינויי גודל על המודל */
+.accessibility-menu *,
+.accessibility-menu h2,
+.accessibility-menu button,
+.accessibility-menu span {
+    transform: none !important;
+}
+
+/* כותרות ספציפיות */
+.section h2 {
+    margin-bottom: 30px;
+}
+
+/* הוספת קלאס להגדלת טקסט */
+.text-size-increased {
+    font-size: 120% !important;
+}
+
+.text-size-increased-more {
+    font-size: 140% !important;
+}
+
+/* הוספת קלאס להקטנת טקסט */
+.text-size-decreased {
+    font-size: 80% !important;
+}
+
+.text-size-decreased-more {
+    font-size: 60% !important;
+}
+
+/* הגדרות גודל טקסט - עם קפיצות עדינות יותר */
+.text-size-increased *,
+.text-size-increased h1,
+.text-size-increased h2,
+.text-size-increased h3,
+.text-size-increased h4,
+.text-size-increased h5,
+.text-size-increased h6,
+.text-size-increased p,
+.text-size-increased span,
+.text-size-increased a,
+.text-size-increased li,
+.text-size-increased label,
+.text-size-increased input,
+.text-size-increased textarea,
+.text-size-increased button {
+    font-size: 110% !important;
+}
+
+.text-size-increased-more *,
+.text-size-increased-more h1,
+.text-size-increased-more h2,
+.text-size-increased-more h3,
+.text-size-increased-more h4,
+.text-size-increased-more h5,
+.text-size-increased-more h6,
+.text-size-increased-more p,
+.text-size-increased-more span,
+.text-size-increased-more a,
+.text-size-increased-more li,
+.text-size-increased-more label,
+.text-size-increased-more input,
+.text-size-increased-more textarea,
+.text-size-increased-more button {
+    font-size: 120% !important;
+}
+
+.text-size-decreased *,
+.text-size-decreased h1,
+.text-size-decreased h2,
+.text-size-decreased h3,
+.text-size-decreased h4,
+.text-size-decreased h5,
+.text-size-decreased h6,
+.text-size-decreased p,
+.text-size-decreased span,
+.text-size-decreased a,
+.text-size-decreased li,
+.text-size-decreased label,
+.text-size-decreased input,
+.text-size-decreased textarea,
+.text-size-decreased button {
+    font-size: 90% !important;
+}
+
+.text-size-decreased-more *,
+.text-size-decreased-more h1,
+.text-size-decreased-more h2,
+.text-size-decreased-more h3,
+.text-size-decreased-more h4,
+.text-size-decreased-more h5,
+.text-size-decreased-more h6,
+.text-size-decreased-more p,
+.text-size-decreased-more span,
+.text-size-decreased-more a,
+.text-size-decreased-more li,
+.text-size-decreased-more label,
+.text-size-decreased-more input,
+.text-size-decreased-more textarea,
+.text-size-decreased-more button {
+    font-size: 80% !important;
+}
+
+/* שמירה על פרופורציות בכותרות עם קפיצות עדינות */
+.text-size-increased h1 { font-size: 2.2em !important; }
+.text-size-increased h2 { font-size: 1.8em !important; }
+.text-size-increased h3 { font-size: 1.5em !important; }
+
+.text-size-increased-more h1 { font-size: 2.4em !important; }
+.text-size-increased-more h2 { font-size: 2em !important; }
+.text-size-increased-more h3 { font-size: 1.7em !important; }
+
+.text-size-decreased h1 { font-size: 2em !important; }
+.text-size-decreased h2 { font-size: 1.6em !important; }
+.text-size-decreased h3 { font-size: 1.3em !important; }
+
+.text-size-decreased-more h1 { font-size: 1.8em !important; }
+.text-size-decreased-more h2 { font-size: 1.4em !important; }
+.text-size-decreased-more h3 { font-size: 1.1em !important; }
+
+/* שמירה על גודל קבוע למודל הנגישות */
+.accessibility-menu,
+.accessibility-menu *,
+.accessibility-menu button,
+.accessibility-menu h2,
+.accessibility-menu span,
+.accessibility-menu p,
+.accessibility-menu a {
+    font-size: 16px !important;
+}
+
+/* עיצוב האייקון החדש */
+.accessibility-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+
+.accessibility-icon img {
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+}
+
+/* הוספת אנימציה עדינה בהובר */
+.accessibility-icon img:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    #accessibility-btn {
+        left: 0px;
+        bottom: 55px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .accessibility-menu {
+        left: 37px;
+        bottom: 96px;
+    }
+    
+}
+
+.accessibility-menu {
+    position: fixed;
+    left: 55px;
+    bottom: 127px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 32px rgba(44, 62, 80, 0.18);
+    padding: 28px 22px 18px 22px;
+    width: 320px;
+    z-index: 9999;
+    direction: rtl;
+    border: none;
+    display: none;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.accessibility-menu h2 {
+    font-size: 1.3em;
+    color: #219150;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+    border-bottom: 1.5px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.accessibility-option {
+    margin: 10px 0;
+}
+
+.accessibility-option button {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 7px;
+    background: #f6f8fa;
+    color: #2c3e50;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    text-align: right;
+    box-shadow: 0 1px 2px rgba(44,62,80,0.04);
+    outline: none;
+    letter-spacing: 0.2px;
+}
+
+.accessibility-option button:hover,
+.accessibility-option button:focus {
+    background: #e0f3e8;
+    color: #219150;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+
+.accessibility-option:last-child {
+    margin-bottom: 0;
+}
+
+/* שמירה על גודל פונט אחיד במודל */
+.accessibility-menu,
+.accessibility-menu * {
+    font-size: 16px !important;
+}
+
+@media (max-width: 786px) {
+    .accessibility-menu {
+        left: 35px;
+        bottom: 96px;
+        min-width: 0;
+        padding: 18px 6px 10px 6px;
+    }
+    .accessibility-menu h2 {
+        font-size: 1.1em;
+        padding-bottom: 7px;
+    }
+    .accessibility-option button {
+        font-size: 0.98em;
+        padding: 10px 10px;
+    }
+}
+
+#accessibility-declaration {
+    margin-top: 87px !important;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#accessibility-declaration h2 {
+    font-size: 1.5em;
+    color: #219150;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#accessibility-declaration h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#accessibility-declaration p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+#accessibility-declaration ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#accessibility-declaration li {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+#accessibility-declaration li::before {
+    content: '✔️';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #219150;
+}
+
+#accessibility-declaration a {
+    color: #219150;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#accessibility-declaration a:hover {
+    color: #ff6b00;
+}
+
+.accessibility-statement-page .hamburger {
+    display: none !important;
+}
+
+.accessibility-statement-page #accessibility-btn {
+    bottom: 5px;
+    left: 5px;
+}
+
+.accessibility-statement-page #accessibility-menu {
+    left: 40px;
+    bottom: 46px;
+}
+
+@media (max-width: 786px) {
+    #accessibility-declaration {
+        margin-top: 60px !important;
+        padding: 15px;
+        width: 90%;
+    }
+
+    #accessibility-declaration h2 {
+        font-size: 1.3em;
+        
+    }
+
+    #accessibility-declaration h3 {
+        font-size: 1.2em;
+    }
+
+    #accessibility-declaration p,
+    #accessibility-declaration li {
+        font-size: 0.89em;
+    }
+
+    #accessibility-declaration li {
+        padding-right: 10px;
+    }
+
+    .accessibility-statement-page #accessibility-btn {
+        bottom: 5px;
+    }
+}
+
