@@ -486,7 +486,7 @@
 .text-size-increased input,
 .text-size-increased textarea,
 .text-size-increased button {
-    font-size: 110% !important;
+    font-size: 100% !important;
 }
 
 .text-size-increased-more *,
@@ -504,7 +504,7 @@
 .text-size-increased-more input,
 .text-size-increased-more textarea,
 .text-size-increased-more button {
-    font-size: 120% !important;
+    font-size: 105% !important;
 }
 
 .text-size-decreased *,
@@ -522,7 +522,7 @@
 .text-size-decreased input,
 .text-size-decreased textarea,
 .text-size-decreased button {
-    font-size: 90% !important;
+    font-size: 95% !important;
 }
 
 .text-size-decreased-more *,
@@ -540,7 +540,7 @@
 .text-size-decreased-more input,
 .text-size-decreased-more textarea,
 .text-size-decreased-more button {
-    font-size: 80% !important;
+    font-size: 90% !important;
 }
 
 /* שמירה על פרופורציות בכותרות עם קפיצות עדינות */
